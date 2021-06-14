@@ -1,0 +1,82 @@
+version: "3"
+services:
+  django:
+    image: x,dkr.ecr.eu-central-1.amazonaws.com/evalai-production-backend:latest
+    env_file:
+      - docker/prod/docker_production.env
+    build:
+      context: ./
+      dockerfile: docker/prod/django/Dockerfile
+    ports:
+      - "8000:8000"
+    logging:
+      driver: awslogs
+      options:
+        awslogs-region: eu-central-1
+        awslogs-group: django_production
+        awslogs-create-group: "true"
+
+  celery:
+    image: x.dkr.ecr.eu-central-1.amazonaws.com/evalai-production-celery:latest
+    env_file:
+      - docker/prod/docker_production.env
+    build:
+      context: ./
+      dockerfile: docker/prod/celery/Dockerfile
+    depends_on:
+      - django
+    logging:
+      driver: awslogs
+      options:
+        awslogs-region: eu-central-1
+        awslogs-group: celery_latest
+        awslogs-create-group: "true"
+
+  worker:
+    image: x.dkr.ecr.eu-central-1.amazonaws.com/evalai-production-worker:latest
+    build:
+      context: ./
+      dockerfile: docker/prod/worker/Dockerfile
+    env_file:
+      - docker/prod/docker_production.env
+    logging:
+      driver: awslogs
+      options:
+        awslogs-region: eu-central-1
+        awslogs-group: worker_production
+        awslogs-create-group: "true"
+
+  nodejs:
+    image: x.dkr.ecr.eu-central-1.amazonaws.com/evalai-production-frontend:latest
+    build:
+      context: ./
+      dockerfile: docker/prod/nodejs/Dockerfile
+      args:
+        NODE_ENV: production
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - /code/node_modules
+      - /code/bower_components
+    logging:
+      driver: awslogs
+      options:
+        awslogs-region: eu-central-1
+        awslogs-group: nodejs_production
+        awslogs-create-group: "true"
+
+  code-upload-worker:
+    image: x.dkr.ecr.eu-central-1.amazonaws.com/evalai-production-code-upload-worker:latest
+    env_file:
+      - docker/prod/docker_code_upload_worker.env
+    build:
+      context: ./
+      dockerfile: docker/prod/code-upload-worker/Dockerfile
+    logging:
+      driver: awslogs
+      options:
+        awslogs-region: eu-central-1
+        awslogs-group: code_upload_worker_production
+        awslogs-create-group: "true"
+        

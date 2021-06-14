@@ -1,0 +1,71 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+.pytest_cache/
+*.py[cod]
+*$py.class
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.coverage
+coverage
+.coverage.*
+.cache
+coverage.xml
+*,cover
+mocked/
+
+# Django stuff:
+*.log
+
+# Sphinx documentation
+docs/_build/
+docs/build/
+
+# pyenv
+.python-version
+
+# dotenv
+.env
+
+# virtualenv
+env/
+venv/
+ENV/
+
+# Fabric Files
+fabfile/
+
+# Frontend Files
+package-lock.json
+.sass-cache/
+node_modules/
+bower_components/
+frontend/dist/
+frontend/index.html
+frontend_v2
+frontend/src/js/config.json
+
+# Challenge data files
+challenge_data/*
+
+# .DS_Store for OSX
+.DS_Store
+
+# Docker Environment Files
+docker/prod/docker_staging.env
+docker/prod/docker_production.env
+docker/prod/docker_production_backup.env
+
+# SSL files
+ssl/
+
+# Code editors
+.vscode
+.idea/
+*.iws
+out/
+.idea_modules/
+
+#pem key
+scripts/deployment/evalai.pem.enc

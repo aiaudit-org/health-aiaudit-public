@@ -1,0 +1,32 @@
+<!-- loader init -->
+<eval-loader></eval-loader>
+<!--auth parent view -->
+<section class="auth-container ">
+    <!-- graphic animated view -->
+    <div class="graphic-cont">
+        <div class="tmp-logo-auth">
+            <img src="dist/images/health-bow-01.png">
+        </div>
+    </div>
+    <!-- rendering auth children here -->
+    <div class="auth-cont">
+        <div class="row">
+            <div class="col s12 m6 offset-m3">
+                <div class="left">
+
+                    <h3 class="text-dark-black"><strong>Evaluating AI models in health</strong></h3>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="reg-alert col s12 m6 offset-m3 align-left text-highlight w-300">{{auth.regMsg}}</div>
+            <div class="ui-view"></div>
+        </div>
+        <div class="row">
+            <div class="reg-alert col s12 m6 offset-m3 align-left text-highlight w-300 social-auth-group">
+              <a ui-sref="home" class="light-link fg-pass">Back to home</a>
+            </div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+</section>

@@ -1,0 +1,282 @@
+.challenge-title-container {
+    padding-bottom: 0px;
+    ul.inline-list {
+        margin: 0px;
+        li {
+            margin-right: 40px;
+            min-height: 40px;
+        }
+    }
+}
+
+.challenge-description a,
+.evaluation-details a,
+.terms-and-conditions a,
+.phase-description a,
+.submission-guidelines a {
+    color: #2196F3;
+    cursor: pointer;
+}
+
+a.active-challenge {
+    color: $dark-black;
+    display: block;
+    height: 40px;
+    box-sizing: border-box;
+    border-bottom: 2px solid $highlight;
+}
+
+.ev-challenge-view {
+    margin-top: 0px;
+    padding-top: 30px;
+    margin-bottom: 20px;
+}
+
+.ev-challenge-approval-view {
+  margin-top: 0px;
+  padding-top: 30px;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+.challenge-container {
+    margin: 0px 10px -30px 10px;
+}
+
+.eval-card {
+    min-height: 160px;
+}
+
+.phase-card {
+    padding-bottom: 1px;
+}
+
+.ev-dark-card {
+    background-color: $light-gray;
+}
+
+.challenge-page-title {
+    padding-bottom: 10px;
+}
+
+.ev-challenge-card {
+    height: 425px;
+}
+
+.ev-dashboard-card {
+    min-height: 190px;
+}
+
+.bg-img {
+    position: absolute;
+    object-fit: cover;
+    height: 100%;
+}
+
+.blue-bg {
+    background: $med-gray;
+    padding: 10px 20px !important;
+    color: #fff;
+    border-radius: 4px;
+}
+
+.phases-cont {
+    padding: 10px 0px;
+}
+
+.rm-margin {
+    margin: 0px;
+}
+
+.result-tag {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.result-val {
+    margin-bottom: 20px;
+    border-bottom: 1px solid #e3e3e3;
+}
+
+.val-style {
+    margin-bottom: 10px;
+}
+
+.submitted,
+.finished {
+    color: green;
+}
+
+.running,
+.submitting {
+    color: orange;
+}
+
+.partially_evaluated {
+    color: royalblue;
+}
+
+.failed,
+.cancelled {
+    color: red;
+}
+
+.chip-green {
+    background-color: #9CCC65;
+}
+
+.chip-red {
+    background-color: #EF5350;
+}
+
+.result-wrn {
+    margin-top: 15px;
+}
+
+.capitalize {
+    text-transform: capitalize;
+}
+
+.update-page {
+    display: block;
+    background: $dark-gray;
+    width: 100%;
+    overflow: auto;
+    padding: 10px;
+    text-align: center;
+    color: #fff;
+    position: absolute;
+    width: auto;
+    right: 0;
+    padding: 10px 30px;
+    box-shadow: 2px 2px 9px #6d6d6d;
+    border-radius: 3px 0px 0px 3px;
+    font-weight: 300;
+    transition: all 0.2s ease-in-out;
+    &:hover {
+        box-shadow: -1px 0px 9px #bbbbbb;
+    }
+}
+
+i.star {
+    font-size: 1rem;
+}
+
+.margin-top-btm {
+    margin-top: 10px;
+    margin-bottom: 25px;
+}
+
+.margin-tb-4 {
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+
+.margin-tb-10 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.width-auto {
+    width: auto !important;
+}
+
+.f-16 {
+    font-size: 16px !important;
+}
+
+.text-med-red {
+    color: red;
+}
+
+md-select.md-default-theme .md-select-value span:first-child:after,
+md-select .md-select-value span:first-child:after {
+    color: white;
+}
+
+.md-checkbox-enabled.md-default-theme[selected] .md-icon,
+.md-checkbox-enabled[selected] .md-icon {
+    background-color: #ffaf4b;
+}
+
+.orange-background {
+    background-color: #ffaf4b !important;
+}
+
+#option-text-color {
+    color: #252833;
+}
+
+@-webkit-keyframes spin {
+    from {
+        -webkit-transform: rotate(0deg);
+    }
+    to {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.spin {
+    -webkit-animation: spin 1s linear infinite;
+    animation: spin 1s linear infinite;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+
+.progress-indicator {
+    width: 14px;
+}
+
+.btn-switch {
+    position: relative;
+    display: block;
+    width: 30px;
+    height: 15px;
+    cursor: pointer;
+    background-color: rgb(167, 163, 163);
+    border: 2px solid rgb(167, 163, 163);
+    border-radius: 40px;
+    .btn-switch-circle {
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: block;
+        height: 10px;
+        width: 10px;
+        background-color: #fff;
+        border-radius: 40px;
+    }
+}
+
+.btn-switch--on {
+    background-color: #ffaf4b;
+    border: 2px solid #ffaf4b;
+    ;
+    .btn-switch-circle--on {
+        left: auto;
+        right: 0;
+    }
+}
+
+.toggle-participation-text {
+    display: inline-block;
+    padding-left: 10px;
+}
+
+.ev-challenge-banner {
+    text-align: justify;
+    padding: 20px 20px 20px 20px;
+}
+
+.margin-bottom-cancel {
+    margin-bottom: 0px;
+}

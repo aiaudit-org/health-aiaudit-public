@@ -1,0 +1,66 @@
+version: "3"
+services:
+  db:
+    image: postgres:10.4
+    ports:
+      - "5432:5432"
+
+  sqs:
+    image: x.dkr.ecr.eu-central-1.amazonaws.com/evalai_sqs
+    hostname: sqs
+    ports:
+      - 9324:9324
+
+  django:
+    hostname: django
+    env_file:
+      - docker/dev/docker.env
+    build:
+      context: ./
+      dockerfile: docker/dev/django/Dockerfile
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+      - sqs
+    volumes:
+      - .:/code
+
+  worker:
+    env_file:
+      - docker/dev/docker.env
+    build:
+      context: ./
+      dockerfile: docker/dev/worker/Dockerfile
+    depends_on:
+      - django
+    volumes:
+      - .:/code
+
+  nodejs:
+    hostname: nodejs
+    build:
+      context: ./
+      dockerfile: docker/dev/nodejs/Dockerfile
+    environment:
+      NODE_ENV: development
+    ports:
+      - "8888:8888"
+      - "35729:35729"
+    volumes:
+      - .:/code
+      - /code/node_modules
+      - /code/bower_components
+
+  nodejs_v2:
+    build:
+      context: ./
+      dockerfile: docker/dev/nodejs_v2/Dockerfile
+    environment:
+      ANGULAR_ENV: development
+    ports:
+      - "9999:4200"
+      - "4200:4200"
+    volumes:
+    - ./frontend_v2:/code
+    - /code/node_modules

@@ -1,0 +1,68 @@
+<section class="ev-sm-container ev-view challenge-container">
+    <div class="ev-md-container ev-card-panel ev-z-depth-5 ev-challenge-view">
+        <div class="row margin-bottom-cancel">
+            <div class="col s12">
+                <h5 class="w-300">My Report</h5>
+                <h6>My Participated Team: {{challenge.participated_team_name}}</h6>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12">
+                <div class="all-submission-table-scroll">
+                    <table class="highlight all-submission-table" class="fs-16 w-300">
+                        <thead>
+                            <th class="fs-18 w-300" data-field="submission_id">#</th>
+                            <th class="fs-18 w-300" data-field="method-name">Model Name</th>
+                            <th class="fs-18 w-300" data-field="method-description">Model Developer</th>
+                            <th class="fs-18 w-300" data-field="project-url">Model Task</th>
+                            <th class="fs-18 w-300" data-field="publication-url">Model Algo</th>
+                            <th class="align-center fs-18 w-300" data-field="status">Accuracy</th>
+                            <th class="fs-18 w-300" data-field="status">Sensetivity</th>
+                            <th class="fs-18 w-300" data-field="file">Specifity</th>
+                            <th class="fs-18 w-300" data-field="file">F-Score</th>
+                            <th class="fs-18 w-300" data-field="file">AU-ROC</th>
+                            <th class="fs-18 w-300" data-field="file">Clinical Implications</th>
+                            <th class="align-center fs-18 w-300" data-field="file">Safety Implications</th>
+
+                        </thead>
+                        <tbody>
+                            <tr class="result-val fs-16 w-300">
+                                <td>1</td>
+                                <td >
+                                    DB Retino</td>
+                                <td > AI4H</td>
+                                <td>Detecting DB Retionopathy</td>
+                                <td >Classification</td>
+                                <td >87.4%</td>
+                                <td > 90.3% </td>
+                                <td>55.4%</td>
+                                <td>1</td>
+                                <td>0.90</td>
+                                <td > Beware of False Positives</td>
+                                <td>Wrong Medical Dosage</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s12 m6 l6">
+                    </p>
+                    <a class="waves-effect waves-dark btn ev-btn-dark w-300 fs-16"
+                        href="dist/images/papers/report.pdf" download="Report">Download Report</a>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</section>
+
+<div class="loader-container card-loader-container" id="loader" ng-show="challenge.isExistLoader" class="fade">
+    <div class="loader">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</div>

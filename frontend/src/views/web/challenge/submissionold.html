@@ -1,0 +1,842 @@
+<!-- Edit the questionnaire section -->
+<section ng-if="challenge.isActive && challenge.questionnaire && !challenge.quest_edit" class="ev-sm-container ev-view challenge-container">
+  <div class="ev-md-container ev-card-panel ev-z-depth-5 ev-challenge-view">
+    <div class="row margin-bottom-cancel">
+      <div class="col s12 m11 l11">
+          <h5 class="w-300">You've already submitted your challenge questionnaire.</h5>
+      </div>
+      <div class="row">
+          <div class="col s12 m6 l6 align-left reg-control">
+              <button ng-click="challenge.quest_edit = true" class="waves-effect waves-dark btn ev-btn-dark w-300 fs-16">Click here to edit again.</button>
+          </div>
+      </div>
+      </div>
+    </div>
+</section>
+
+<!-- submit questionnaire section -->
+<section ng-if="challenge.isActive && (!challenge.questionnaire || challenge.quest_edit)" class="ev-sm-container ev-view challenge-container">
+  <div class="ev-md-container ev-card-panel ev-z-depth-5 ev-challenge-view">
+    <div class="row margin-bottom-cancel">
+      <div class="col s12 m11 l11">
+          <h5 class="w-300">Please fill out this form before submitting a challenge.</h5>
+      </div>
+
+        <form ng-submit="challenge.submitQuestionnaire()">
+            <div class="row">
+                <div class="input-field align-left col s8 m8 l6">
+                    <label for="a_1" data-error="wrong" data-success="right">1. For which purpose was the ML model developed for?</label>
+                    <span ></span><br>
+                    <input id="a_1" placeholder="{{challenge.questionnaire.a_1}}" type="text" class="validate fs-16 dark-autofill w-300" ng-model="challenge.a_1" focus-if  >
+                </div>
+                <div class="input-field align-left col s8 m8 l6">
+                    <label for="a_2" data-error="wrong" data-success="right">2. Where was the dataset collected from? </label>
+                    <span ></span><br>
+                    <input id="a_2" placeholder="{{challenge.questionnaire.a_2}}" type="text" class="validate fs-16 dark-autofill w-300" ng-model="challenge.a_2" focus-if
+                        >
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-field align-left col s8 m8 l6">
+                    <label for="a_3" data-error="wrong" data-success="right">3. Who created the dataset?</label>
+                    <span ></span><br>
+                    <input id="a_3" placeholder="{{challenge.questionnaire.a_3}}" type="text" class="validate fs-16 dark-autofill w-300" ng-model="challenge.a_3" focus-if
+                        >
+                </div>
+                <div class="input-field align-left col s8 m8 l6">
+                    <label for="a_4" data-error="wrong" data-success="right">4. For what purpose was the dataset created? </label>
+                    <span ></span><br>
+                    <input id="a_4" type="text" placeholder="{{challenge.questionnaire.a_4}}" class="validate fs-16 dark-autofill w-300" ng-model="challenge.a_4" focus-if
+                        >
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-field align-left col s8 m8 l6">
+
+                    <label for="a_5" data-error="wrong" data-success="right">5. When was the dataset collected?</label>
+                    <span ></span><br>
+                    <input id="a_5" placeholder="{{challenge.questionnaire.a_5}}" type="date" class="validate fs-16 dark-autofill w-300" ng-model="challenge.a_5" focus-if required
+                        >
+                </div>
+                <div class="input-field align-left col s8 m8 l6">
+                    <label for="a_6" data-error="wrong" data-success="right">6. Are there archived versions of the raw/original dataset available?</label>
+                    <span ></span><br>
+                    <input id="a_6" placeholder="{{challenge.questionnaire.a_6}}" type="text" class="validate fs-16 dark-autofill w-300" ng-model="challenge.a_6" focus-if  >
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-field align-left col s8 m8 l6">
+                    <label for="a_7" data-error="wrong" data-success="right">7. What were the inclusion and exclusion criteria for the training dataset?</label>
+                    <span ></span><br>
+                    <input id="a_7" placeholder="{{challenge.questionnaire.a_7}}" type="text" class="validate fs-16 dark-autofill w-300" ng-model="challenge.a_7" focus-if
+                        >
+                </div>
+                <div class="input-field align-left col s8 m8 l6">
+
+                    <label for="a_8" data-error="wrong" data-success="right">8. What were the inclusion and exclusion criteria for the test dataset?</label>
+                    <span ></span><br>
+                    <input id="a_8" placeholder="{{challenge.questionnaire.a_8}}" type="text" class="validate fs-16 dark-autofill w-300" ng-model="challenge.a_8" focus-if
+                        >
+            </div>
+
+            <div class="row">
+                <div class="input-field align-left col s8 m8 l6">
+                  <label class="validate fs-16 dark-autofill w-300">9. Were instances from the original dataset excluded for the ML model training?</label>
+                    <span ></span><br>
+                    <span ></span><br>
+                    <span ></span><br>
+                    <md-radio-group ng-model="challenge.a_9" id="a_9" layout="row">
+                      <md-radio-button value="Yes" ng-class="{'md-checked':challenge.questionnaire.a_9 == 'Yes'}">Yes</md-radio-button>
+                      <md-radio-button value="No" ng-class="{'md-checked':challenge.questionnaire.a_9 == 'No'}">No</md-radio-button>
+                    </md-radio-group>
+                </div>
+                <div class="input-field align-left col s8 m8 l6">
+                  <label class="validate fs-16 dark-autofill w-300">10. Does the dataset contain confidential/personal information?</label>
+                    <span ></span><br>
+                    <span ></span><br>
+                    <span ></span><br>
+                    <md-radio-group ng-model="challenge.a_10" id="a_10" layout="row">
+                      <md-radio-button value="Yes" ng-class="{'md-checked':challenge.questionnaire.a_10 == 'Yes'}">Yes</md-radio-button>
+                      <md-radio-button value="No" ng-class="{'md-checked':challenge.questionnaire.a_10 == 'No'}">No</md-radio-button>
+                    </md-radio-group>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-field align-left col s8 m8 l6">
+                  <label class="validate fs-16 dark-autofill w-300">11. Is it possible to identify individuals from the dataset? </label>
+                    <span ></span><br>
+                    <span ></span><br>
+                    <span ></span><br>
+                    <md-radio-group ng-model="challenge.a_11" id="a_11" layout="row">
+                      <md-radio-button value="Yes" ng-class="{'md-checked':challenge.questionnaire.a_11 == 'Yes'}">Yes</md-radio-button>
+                      <md-radio-button value="No" ng-class="{'md-checked':challenge.questionnaire.a_11 == 'No'}">No</md-radio-button>
+                    </md-radio-group>
+                </div>
+                <div class="input-field align-left col s8 m8 l6">
+                  <label class="validate fs-16 dark-autofill w-300" >12. Were the datasets de-identiﬁed / anonymised ? </label>
+                    <span ></span><br>
+                    <span ></span><br>
+                    <span ></span><br>
+                    <md-radio-group ng-model="challenge.a_12" id="a_12" layout="row">
+                      <md-radio-button value="Yes" ng-class="{'md-checked':challenge.questionnaire.a_12 == 'Yes'}">Yes</md-radio-button>
+                      <md-radio-button value="No" ng-class="{'md-checked':challenge.questionnaire.a_12 == 'No'}">No</md-radio-button>
+                    </md-radio-group>
+                </div>
+            </div
+
+            <div class="row">
+                <div class="input-field align-left col s8 m8 l6">
+                  <label class="validate fs-16 dark-autofill w-300">13. If the dataset relates to people, were they informed about the purpose for which the dataset would be used for? </label>
+                    <span ></span><br>
+                    <span ></span><br>
+                    <span ></span><br>
+                    <md-radio-group ng-model="challenge.a_13" id="a_13" layout="row">
+                      <md-radio-button value="Yes" ng-class="{'md-checked':challenge.questionnaire.a_13 == 'Yes'}">Yes</md-radio-button>
+                      <md-radio-button value="No" ng-class="{'md-checked':challenge.questionnaire.a_13 == 'No'}">No</md-radio-button>
+                    </md-radio-group>
+                </div>
+                <div class="input-field align-left col s8 m8 l6">
+                  <label class="validate fs-16 dark-autofill w-300" >14. Did you obtain consent from the people for the usage of the dataset related to them? </label>
+                    <span ></span><br>
+                    <span ></span><br>
+                    <span ></span><br>
+                    <md-radio-group ng-model="challenge.a_14" id="a_14" layout="row">
+                      <md-radio-button value="Yes" ng-class="{'md-checked':challenge.questionnaire.a_14 == 'Yes'}">Yes</md-radio-button>
+                      <md-radio-button value="No" ng-class="{'md-checked':challenge.questionnaire.a_14 == 'No'}">No</md-radio-button>
+                    </md-radio-group>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-field align-left col s8 m8 l6">
+                  <label class="validate fs-16 dark-autofill w-300">15. Did you obtain consent from the people for the usage of dataset collected from them? </label>
+                    <span ></span><br>
+                    <span ></span><br>
+                    <span ></span><br>
+                    <md-radio-group ng-model="challenge.a_15" id="a_15" layout="row">
+                      <md-radio-button value="Yes" ng-class="{'md-checked':challenge.questionnaire.a_15 == 'Yes'}">Yes</md-radio-button>
+                      <md-radio-button value="No" ng-class="{'md-checked':challenge.questionnaire.a_15 == 'No'}">No</md-radio-button>
+                    </md-radio-group>
+                </div>
+                <div class="input-field align-left col s8 m8 l6">
+                  <label class="validate fs-16 dark-autofill w-300" >16. Are people provided with any mechanism to revoke their consent in the future? </label>
+                    <span ></span><br>
+                    <span ></span><br>
+                    <span ></span><br>
+                    <md-radio-group ng-model="challenge.a_16" id="a_16" layout="row">
+                      <md-radio-button value="Yes" ng-class="{'md-checked':challenge.questionnaire.a_16 == 'Yes'}">Yes</md-radio-button>
+                      <md-radio-button value="No" ng-class="{'md-checked':challenge.questionnaire.a_16 == 'No'}">No</md-radio-button>
+                    </md-radio-group>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-field align-left col s8 m8 l6">
+                  <label class="validate fs-16 dark-autofill w-300">17. Are there attributes of the dataset that might impact future use of the developed ML model? </label>
+                    <span ></span><br>
+                    <span ></span><br>
+                    <span ></span><br>
+                    <md-radio-group ng-model="challenge.a_17" id="a_17" layout="row">
+                      <md-radio-button value="Yes" ng-class="{'md-checked':challenge.questionnaire.a_17 == 'Yes'}">Yes</md-radio-button>
+                      <md-radio-button value="No" ng-class="{'md-checked':challenge.questionnaire.a_17 == 'No'}">No</md-radio-button>
+                    </md-radio-group>
+                </div>
+                <div class="input-field align-left col s8 m8 l6">
+                  <label class="validate fs-16 dark-autofill w-300" >18. As part of clinical evaluation, was there a comparative analysis done on in comparison to other ML procedures?  </label>
+                    <span ></span><br>
+                    <span ></span><br>
+                    <span ></span><br>
+                    <md-radio-group ng-model="challenge.a_18" id="a_18" layout="row">
+                      <md-radio-button value="Yes" ng-class="{'md-checked':challenge.questionnaire.a_18 == 'Yes'}">Yes</md-radio-button>
+                      <md-radio-button value="No" ng-class="{'md-checked':challenge.questionnaire.a_18 == 'No'}">No</md-radio-button>
+                    </md-radio-group>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-field align-left col s8 m8 l6">
+                  <label class="validate fs-16 dark-autofill w-300">19. Is the processing pipeline of the ML model difficult to explain to the user? </label>
+                    <span ></span><br>
+                    <span ></span><br>
+                    <span ></span><br>
+                    <md-radio-group ng-model="challenge.a_19" id="a_19" layout="row">
+                      <md-radio-button value="Yes" ng-class="{'md-checked':challenge.questionnaire.a_19 == 'Yes'}">Yes</md-radio-button>
+                      <md-radio-button value="No" ng-class="{'md-checked':challenge.questionnaire.a_19 == 'No'}">No</md-radio-button>
+                    </md-radio-group>
+                </div>
+                <div class="input-field align-left col s8 m8 l6">
+                  <label class="validate fs-16 dark-autofill w-300" >20. Is there an interpretability-performance trade-off observed ?  </label>
+                    <span ></span><br>
+                    <span ></span><br>
+                    <span ></span><br>
+                    <md-radio-group ng-model="challenge.a_20" id="a_20" layout="row">
+                      <md-radio-button value="Yes" ng-class="{'md-checked':challenge.questionnaire.a_20 == 'Yes'}">Yes</md-radio-button>
+                      <md-radio-button value="No" ng-class="{'md-checked':challenge.questionnaire.a_20 == 'No'}">No</md-radio-button>
+                    </md-radio-group>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-field align-left col s8 m8 l6">
+                  <label class="validate fs-16 dark-autofill w-300">21.  Whether measures were incorporated to deal with unintended consequences of the ML model application in the clinical setting? </label>
+                    <span ></span><br>
+                    <span ></span><br>
+                    <span ></span><br>
+                    <md-radio-group ng-model="challenge.a_21" id="a_21" layout="row">
+                      <md-radio-button value="Yes" ng-class="{'md-checked':challenge.questionnaire.a_21 == 'Yes'}">Yes</md-radio-button>
+                      <md-radio-button value="No" ng-class="{'md-checked':challenge.questionnaire.a_21 == 'No'}">No</md-radio-button>
+                    </md-radio-group>
+                </div>
+                <div class="input-field align-left col s8 m8 l6">
+                  <label class="validate fs-16 dark-autofill w-300" >22.Whether mechanisms were incorporated to ensure transparency of the data flow in the ML model development? </label>
+                    <span ></span><br>
+                    <span ></span><br>
+                    <span ></span><br>
+                    <md-radio-group ng-model="challenge.a_22" id="a_22" layout="row">
+                      <md-radio-button value="Yes" ng-class="{'md-checked':challenge.questionnaire.a_22 == 'Yes'}">Yes</md-radio-button>
+                      <md-radio-button value="No" ng-class="{'md-checked':challenge.questionnaire.a_22 == 'No'}">No</md-radio-button>
+                    </md-radio-group>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-field align-left col s8 m8 l6">
+                    <label for="a_23" data-error="wrong" data-success="right">23. How was the patient data secured? </label>
+                    <span ></span><br>
+                    <input id="a_23" type="text" placeholder="{{challenge.questionnaire.a_23}}" class="validate fs-16 dark-autofill w-300" ng-model="challenge.a_23" focus-if
+                        >
+                </div>
+                <div class="input-field align-left col s8 m8 l6">
+                    <label for="a_24" data-error="wrong" data-success="right">24. What is the patient beneficial impact of the ML model intervention?</label>
+                    <span ></span><br>
+                    <input id="a_24" placeholder="{{challenge.questionnaire.a_24}}" type="text" class="validate fs-16 dark-autofill w-300" ng-model="challenge.a_24" focus-if
+                        >
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-field align-left col s8 m8 l6">
+                    <label for="a_25" data-error="wrong" data-success="right">25. What is the care quality impact of the ML model intervention? </label>
+                    <span ></span><br>
+                    <input id="a_25" placeholder="{{challenge.questionnaire.a_25}}" type="text" class="validate fs-16 dark-autofill w-300" ng-model="challenge.a_25" focus-if
+                        >
+                </div>
+                <div class="input-field align-left col s12 m12 l12">
+                  <label class="validate fs-16 dark-autofill w-300" >26. For data reproducibility verification, were the data inclusion and exclusion criteria properly validated to find if there is any mismatch between ‘reported’ sample size and  ‘actual ‘reproduced’ sample size? </label>
+                    <span ></span><br>
+                    <span ></span><br>
+                    <span ></span><br>
+                    <md-radio-group ng-model="challenge.a_26" id="a_26" layout="row">
+                      <md-radio-button value="Yes" ng-class="{'md-checked':challenge.questionnaire.a_26 == 'Yes'}">Yes</md-radio-button>
+                      <md-radio-button value="No" ng-class="{'md-checked':challenge.questionnaire.a_26 == 'No'}">No</md-radio-button>
+                    </md-radio-group>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-field align-left col s8 m8 l6">
+                    <label for="a_27" data-error="wrong" data-success="right">27. Which metrics were selected for ML model performance evaluation and what was the selection criteria used? </label>
+                    <input id="a_27" type="text" placeholder="{{challenge.questionnaire.a_27}}" class="validate fs-16 dark-autofill w-300" ng-model="challenge.a_27" focus-if
+                        >
+                </div>
+                <div class="input-field align-left col s8 m8 l8">
+                  <label class="validate fs-16 dark-autofill w-300" >28. Have you specified any quantitative performance requirements for your use case? </label>
+                    <span ></span><br>
+                    <span ></span><br>
+                    <span ></span><br>
+                    <md-radio-group ng-model="challenge.a_28" id="a_28" layout="row">
+                      <md-radio-button value="Yes" ng-class="{'md-checked':challenge.questionnaire.a_28 == 'Yes'}">Yes</md-radio-button>
+                      <md-radio-button value="No" ng-class="{'md-checked':challenge.questionnaire.a_28 == 'No'}">No</md-radio-button>
+                    </md-radio-group>
+                </div>
+            </div>
+
+            <div class="row">
+              <div class="input-field align-left col s8 m8 l6">
+                <label class="validate fs-16 dark-autofill w-300" >29. Tested risk against the following conditions?</label>
+                  <span></span><br>
+
+                  <md-input-container>
+                    <md-select ng-model="challenge.a_29" id="a_29" multiple="True" placeholder="Options">
+                      <md-option value="Patients other than specified">Patients other than specified</md-option>
+                      <md-option value="Non-specified use environment">Non-specified use environment</md-option>
+                      <md-option value="patients of different age, sex, race, co-morbidities">patients of different age, sex, race, co-morbidities</md-option>
+                      <md-option value="patients with different severity of disease type">patients with different severity of disease type</md-option>
+                    </md-select>
+                  </md-input-container>
+              </div>
+                <div class="input-field align-left col s8 m8 l10">
+                  <label class="validate fs-16 dark-autofill w-300" >30. Have you estimated the risks associated with the ML model performance variability due to change in the hardware and the software configurations of the computing environment? </label>
+                    <span ></span><br>
+                    <span ></span><br>
+                    <span ></span><br>
+                    <md-radio-group ng-model="challenge.a_30" id="a_30" layout="row">
+                      <md-radio-button value="Yes" ng-class="{'md-checked':challenge.questionnaire.a_30 == 'Yes'}">Yes</md-radio-button>
+                      <md-radio-button value="No" ng-class="{'md-checked':challenge.questionnaire.a_30 == 'No'}">No</md-radio-button>
+                    </md-radio-group>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-field align-left col s8 m8 l6">
+                    <label class="validate fs-16 dark-autofill w-300" >31. Have you estimated the risks associated with the ML model performance variability due to adversarial attacks? </label>
+                      <span ></span><br>
+                      <span ></span><br>
+                      <span ></span><br>
+                      <md-radio-group ng-model="challenge.a_31" id="a_31" layout="row">
+                        <md-radio-button value="Yes" ng-class="{'md-checked':challenge.questionnaire.a_31 == 'Yes'}">Yes</md-radio-button>
+                        <md-radio-button value="No" ng-class="{'md-checked':challenge.questionnaire.a_31 == 'No'}">No</md-radio-button>
+                      </md-radio-group>
+                  </div>
+            </div>
+            <div class="row">
+                  <div class="input-field align-left col s8 m8 l12">
+                    <label for="a_32" data-error="wrong" data-success="right">32. How did you evaluate the quality of labeling? (E.g. How did you evaluate the quality of ground truth annotation?) </label>
+                    <input id="a_32" placeholder="{{challenge.questionnaire.a_32}}" type="text" class="validate fs-16 dark-autofill w-300" ng-model="challenge.a_32" focus-if  >
+                  </div>
+            </div>
+
+
+            <div class="row">
+                <div class="input-field align-left col s8 m8 l6">
+                    <label for="a_33" data-error="wrong" data-success="right">33. How did you establish a baseline for the performance of annotation specialists?   </label>
+                    <span ></span><br>
+                    <input id="a_33" placeholder="{{challenge.questionnaire.a_33}}" type="text" class="validate fs-16 dark-autofill w-300" ng-model="challenge.a_33" focus-if
+                        >
+                </div>
+                <div class="input-field align-left col s8 m8 l6">
+                    <label for="a_34" data-error="wrong" data-success="right">34. What eligibility criteria of annotation specialists were considered?</label>
+                    <span ></span><br>
+                    <input id="a_34" placeholder="{{challenge.questionnaire.a_34}}" type="text" class="validate fs-16 dark-autofill w-300" ng-model="challenge.a_34" focus-if>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-field align-left col s8 m8 l6">
+                  <label class="validate fs-16 dark-autofill w-300" >35. Was the inter-annotator reliability measured as part of a labeling quality check? </label>
+                    <span ></span><br>
+                    <span ></span><br>
+                    <span ></span><br>
+                    <md-radio-group ng-model="challenge.a_35" id="a_35" layout="row">
+                      <md-radio-button value="Yes" ng-class="{'md-checked':challenge.questionnaire.a_35 == 'Yes'}">Yes</md-radio-button>
+                      <md-radio-button value="No" ng-class="{'md-checked':challenge.questionnaire.a_35 == 'No'}">No</md-radio-button>
+                    </md-radio-group>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field align-left col s8 m8 l6">
+                    <label for="a_36" data-error="wrong" data-success="right">36. How were the perceptual errors and biases of the annotators accounted for? </label>
+                    <span ></span><br>
+                    <input id="a_36" placeholder="{{challenge.questionnaire.a_36}}" type="text" class="validate fs-16 dark-autofill w-300" ng-model="challenge.a_36" focus-if  >
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-field align-left col s8 m8 l6">
+                  <label class="validate fs-16 dark-autofill w-300" >37. Is there a justification for the selection of ground truth? </label>
+                    <span ></span><br>
+                    <span ></span><br>
+
+                    <md-radio-group ng-model="challenge.a_37" id="a_37" layout="row">
+                      <md-radio-button value="Yes" ng-class="{'md-checked':challenge.questionnaire.a_37 == 'Yes'}">Yes</md-radio-button>
+                      <md-radio-button value="No" ng-class="{'md-checked':challenge.questionnaire.a_37 == 'No'}">No</md-radio-button>
+                    </md-radio-group>
+                </div>
+
+                <div class="input-field align-left col s8 m8 l6">
+                    <label for="a_38" data-error="wrong" data-success="right">38. Provide the specifications for the task-specific computational efficiency of the ML model? </label>
+                    <input id="a_38" placeholder="{{challenge.questionnaire.a_38}}" type="text" class="validate fs-16 dark-autofill w-300" ng-model="challenge.a_38" focus-if  >
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-field align-left col s8 m8 l6">
+                  <label class="validate fs-16 dark-autofill w-300">39. Does the ML model have a license?  </label>
+                    <span ></span><br>
+                    <span ></span><br>
+                    <span ></span><br>
+                    <md-radio-group ng-model="challenge.a_39" id="a_39 layout="row">
+                      <md-radio-button value="Yes" ng-class="{'md-checked':challenge.questionnaire.a_39 == 'Yes'}">Yes</md-radio-button>
+                      <md-radio-button value="No" ng-class="{'md-checked':challenge.questionnaire.a_39 == 'No'}">No</md-radio-button>
+                    </md-radio-group>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col s4 m4 l4 align-left reg-control">
+                    <button class="waves-effect waves-dark btn ev-btn-dark fs-16" type="submit"
+                        value="Submit">Submit</button>
+                </div>
+                <div class="col s4 m4 l4 align-left reg-control">
+                    <button ng-if="challenge.quest_edit" ng-click="challenge.quest_edit = false" class="waves-effect waves-dark btn ev-btn-dark fs-16">Continue editing later.</button>
+                </div>
+            </div>
+        </form>
+
+      </div>
+    </div>
+</section>
+
+<section ng-if="challenge.isActive" class="ev-sm-container ev-view challenge-container">
+    <div class="ev-md-container ev-card-panel ev-z-depth-5 ev-challenge-view margin-btm-0">
+        <div class="row margin-bottom-cancel">
+            <div class="col s12 m11 l11">
+                <h5 class="w-300">Submission Guidelines</h5>
+            </div>
+            <div ng-if="challenge.isChallengeHost" class="col s1 m1">
+                <a class="pointer" ng-click="challenge.submissionGuidelinesDialog($event)">
+                    <i class="fa fa-pencil" aria-hidden="true">
+                    </i>&nbsp;edit
+                </a>
+            </div>
+            <div class="col s12 m12 l12">
+                <div class="what-a-separator"></div>
+            </div>
+
+            <div class="col s12" ng-if="challenge.isChallengeHost">
+                <p class="fs-16"><strong>Note: </strong>Your submissions won't be
+                    visible on leaderboard for <strong class="blue-text"> Public Challenge Phases </strong>
+                    since you are a challenge host
+                    for this challenge.<br>This feature is only for your testing purposes.</p>
+
+            </div>
+            <div class="col s12">
+                <div ng-bind-html="challenge.page.submission_guidelines" class="fs-16 w-300 submission-guidelines trix-container"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- If challenge is docker based -->
+<section class="ev-sm-container ev-view challenge-container phase-container" ng-if="challenge.page.is_docker_based">
+    <div class="ev-md-container ev-card-panel ev-z-depth-5 ev-challenge-view margin-btm-0">
+        <div class="row margin-bottom-cancel">
+            <div class="col s12">
+                <h5 class="w-300">
+                    Submission instructions for docker based challenges
+                </h5>
+                <ol class="fs-16 w-300">
+                    <li>Install evalai-cli<br>
+                        <code>$ pip install evalai{{challenge.cliVersion}}</code>
+                        <button class="btn ev-btn-dark waves-effect waves-dark grad-btn code-btn"
+                            ng-click="challenge.showConfirmation('Command copied to clipboard')" ngclipboard
+                            data-clipboard-text='pip install "evalai{{challenge.cliVersion}}"'>
+                            <i class="fa fa-clipboard" aria-hidden="true" alt="Copy to clipboard."></i>
+                        </button>
+                    </li>
+                    <li>Add your EvalAI account token to evalai-cli<br>
+                        <code>$ evalai set_token {{challenge.authToken}}</code>
+                        <button class="btn ev-btn-dark waves-effect waves-dark grad-btn code-btn"
+                            ng-click="challenge.showConfirmation('Command copied to clipboard')" ngclipboard
+                            data-clipboard-text="evalai set_token {{challenge.authToken}}">
+                            <i class="fa fa-clipboard" aria-hidden="true" alt="Copy to clipboard."></i>
+                        </button>
+                    </li>
+                    <li>Push docker image to EvalAI docker registry<br>
+                        <code>$ evalai push &lt;image&gt;:&lt;tag&gt; --phase &lt;phase_name&gt;</code>
+                        <button class="btn ev-btn-dark waves-effect waves-dark grad-btn code-btn"
+                            ng-click="challenge.showConfirmation('Command copied to clipboard')" ngclipboard
+                            data-clipboard-text="evalai push <image>:<tag> --phase <phase_name>">
+                            <i class="fa fa-clipboard" aria-hidden="true" alt="Copy to clipboard."></i>
+                        </button>
+                    </li>
+                    <li>For more commands, please refer to <a class="highlight-link"
+                            href="https://evalai-cli.cloudcv.org/" target="_blank">evalai-cli documentation.</a>
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- If challenge is docker based -->
+<section class="ev-sm-container ev-view challenge-container phase-container" ng-if="challenge.page.is_docker_based">
+    <div class="ev-md-container ev-card-panel ev-z-depth-5 ev-challenge-view">
+        <div class="row margin-bottom-cancel">
+            <div class="col s12">
+                <h5 class="w-300">
+                    Submission limits
+                </h5>
+                <p class="fs-16 w-300">
+                    <strong>Team name:</strong> {{challenge.phaseRemainingSubmissions.participant_team}}
+                </p>
+                <table class="responsive-table fs-16 w-300">
+                    <thead>
+                        <tr>
+                            <th>Phase details</th>
+                            <th>Remaining submissions</th>
+                            <th>Submission command</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="key in challenge.phaseRemainingSubmissions.phases">
+                            <td>{{key.name}}
+                                <br>
+                                <strong class="text-med-black">Start date:
+                                </strong>{{key.start_date | date:'medium'}}
+                                <br>
+                                <strong class="text-med-black">End date: </strong>{{key.end_date | date:'medium'}}
+                            </td>
+                            <td ng-if="challenge.phaseRemainingSubmissionsFlags[key.id] === 'showSubmissionNumbers'">
+                                <strong>
+                                    Today:
+                                </strong>
+                                {{key.limits.remaining_submissions_today_count}}<br>
+                                <strong>
+                                    This month:
+                                </strong>
+                                {{key.limits.remaining_submissions_this_month_count}}<br>
+                                <strong>
+                                    Total:
+                                </strong>
+                                {{key.limits.remaining_submissions_count}}
+                            </td>
+                            <td ng-if="challenge.phaseRemainingSubmissionsFlags[key.id] === 'showClock'">
+                                <strong>{{key.limits.message}}</strong><br> Next submission will be available in<br>
+                                <div>
+                                    <span
+                                        ng-if="challenge.days!=0">{{challenge.phaseRemainingSubmissionsCountdown[key.id].days}}
+                                        Days, </span>{{challenge.phaseRemainingSubmissionsCountdown[key.id].hours}}
+                                    hours : {{challenge.phaseRemainingSubmissionsCountdown[key.id].minutes}} minutes
+                                    :
+                                    {{challenge.phaseRemainingSubmissionsCountdown[key.id].seconds}} seconds
+                                </div>
+                            </td>
+                            <td ng-if="challenge.phaseRemainingSubmissionsFlags[key.id] === 'maxExceeded'">
+                                <strong>{{key.limits.message}}</strong><br>
+                                <strong>
+                                    {{key.limits.maxExceededMessage}}
+                                </strong>
+                            </td>
+                            <td>
+                                <code>$ evalai push &lt;image&gt;:&lt;tag&gt; --phase {{key.slug}}</code>
+                                <button class="btn ev-btn-dark waves-effect waves-dark grad-btn code-btn"
+                                    ng-click="challenge.showConfirmation('Command copied to clipboard')" ngclipboard
+                                    data-clipboard-text="evalai push <image>:<tag> --phase {{key.slug}}">
+                                    <i class="fa fa-clipboard" aria-hidden="true" alt="Copy to clipboard."></i>
+                                </button>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+            <div class="loader-container card-loader-container" id="loader" ng-show="challenge.isExistLoader"
+                class="fade">
+                <div class="loader">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- If challenge is not docker based -->
+<section class="ev-sm-container ev-view challenge-container phase-container" ng-if="!challenge.page.is_docker_based">
+    <div class="ev-md-container ev-card-panel ev-z-depth-5 ev-challenge-view">
+        <div class="row margin-bottom-cancel">
+            <div class="col s12">
+                <h5 class="w-300">Make Submission</h5>
+            </div>
+
+            <div class="col s12 m7 fs-16 w-300">
+                <div class="ev-card-body exist-team-card">
+                    <form ng-submit="challenge.makeSubmission();">
+                        <p class="fs-18 w-400">Select phase:</p>
+                        <ul>
+                            <li ng-repeat="item in challenge.phases.results">
+                                <input
+                                    ng-disabled="challenge.currentDate < item.start_date || challenge.currentDate >= item.end_date"
+                                    type="radio" name="selectPhase" class="with-gap selectPhase" id="{{item.id}}"
+                                    value="{{item.id}}" ng-model="challenge.phaseId"
+                                    ng-click="challenge.showRemainingSubmissions(item.id); challenge.loadPhaseAttributes(item.id); challenge.clearMetaAttributeValues();">
+                                <label for="{{item.id}}"></label>
+                                <div class="show-member-title pointer" ng-if="!item.showPrivate"><strong
+                                        class="text-med-black">Phase: </strong>{{item.name}}
+                                    <br>
+                                    <strong class="text-med-black">Start date:
+                                    </strong>{{item.start_date | date:'medium'}} {{item.start_zone}}
+                                    <br>
+                                    <strong class="text-med-black">End date:
+                                    </strong>{{item.end_date | date:'medium'}} {{item.end_zone}}
+                                </div>
+                                <div class="show-member-title pointer" ng-if="item.showPrivate"><strong
+                                        class="text-highlight">Phase: </strong> <span class="text-highlight">
+                                        {{item.name}}</span>
+                                    <br>
+                                    <strong class="text-highlight">Start date: </strong><span
+                                        class="text-highlight">{{item.start_date | date:'medium'}}
+                                        {{item.start_zone}}</span>
+                                    <br>
+                                    <strong class="text-highlight">End date: </strong><span
+                                        class="text-highlight">{{item.end_date | date:'medium'}}
+                                        {{item.end_zone}}</span>
+                                </div>
+                                <div class="clearfix"></div>
+                            </li>
+
+                            <p class="fs-18 w-400">Select submission type:</p>
+                            <li>
+                                <input type="radio" name="submissionOptions" class="with-gap selectPhase" id="fileUrl"
+                                    value="fileUrl" ng-click="challenge.isSubmissionUsingUrl = true">
+                                <label for="fileUrl"></label>
+                                <div class="show-member-title pointer">
+                                    <strong class="fs-16 w-300">File URL (for file size > 400MB)
+                                    </strong>
+                                </div>
+                                <div class="clearfix"></div>
+
+                                <input type="radio" name="submissionOptions" class="with-gap selectPhase"
+                                    id="fileUpload" value="challenge.showFileUploadOption"
+                                    ng-click="challenge.isSubmissionUsingUrl = false">
+                                <label for="fileUpload"></label>
+                                <div class="show-member-title pointer">
+                                    <strong class="fs-16 w-300">Upload file </strong>
+                                </div>
+                                <div class="clearfix"></div>
+                            </li>
+
+                            <div ng-show="challenge.isSubmissionUsingUrl == false" class="row">
+                                <div class="file-field input-field col s10">
+                                    <div class="waves-effect waves-dark btn ev-btn-dark w-300 fs-14">
+                                        <span>Upload file</span>
+                                        <input type="file" ngf-select ng-model="challenge.input_file"
+                                            name="challenge.input_file"
+                                            accept=".json, .zip, .txt, .tsv, .gz, .csv, .h5, .npy">
+                                    </div>
+                                    <div class="file-path-wrapper">
+                                        <input class="file-path validate" type="text" readonly>
+                                    </div>
+                                </div>
+                            </div>
+                            <div ng-show="challenge.isSubmissionUsingUrl" class="row">
+                                <div class="input-field align-left col s10">
+                                    <input type="text" id="fileUrl" name="fileUrl" ng-model="challenge.fileUrl">
+                                    <span class="form-icon"><i class="fa fa-text"></i></span>
+                                    <label for="fileUrl">Submission file URL</label>
+                                </div>
+                            </div>
+                            <span
+                                ng-show="challenge.isSubmissionUsingUrl == true || challenge.isSubmissionUsingUrl == false">
+                                <div class="row">
+                                    <div class="input-field align-left col s10">
+                                        <input type="text" id="methodName" name="methodName"
+                                            ng-model="challenge.methodName">
+                                        <span class="form-icon"><i class="fa fa-text"></i></span>
+                                        <label for="methodName">Method name (Optional)</label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="input-field align-left col s10">
+                                        <textarea id="methodDesc" class="materialize-textarea" name="methodDesc"
+                                            ng-model="challenge.methodDesc"></textarea>
+                                        <span class="form-icon"><i class="fa fa-text"></i></span>
+                                        <label for="methodDesc">Method description (Optional)</label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="input-field align-left col s10">
+                                        <input type="text" id="projectUrl" name="projectUrl"
+                                            ng-model="challenge.projectUrl">
+                                        <span class="form-icon"><i class="fa fa-text"></i></span>
+                                        <label for="projectUrl">Project URL (Optional)</label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="input-field align-left col s10">
+                                        <input type="text" id="publicationUrl" name="publicationUrl"
+                                            ng-model="challenge.publicationUrl">
+                                        <span class="form-icon"><i class="fa fa-text"></i></span>
+                                        <label for="publicationUrl">Publication URL (Optional)</label>
+                                    </div>
+                                </div>
+
+                                <div class="dynamicform">
+                                    <div ng-if="challenge.metaAttributesforCurrentSubmission != null" ng-repeat="attribute in challenge.metaAttributesforCurrentSubmission">
+                                       <div class="row">
+                                           <div ng-if="attribute.type == 'text'">
+                                                <div class="row">
+                                                    <div class="input-field align-left col s10">
+                                                        <span><strong>{{attribute.name}}</strong> - {{attribute.description}}</span><br>
+                                                        <input type="text" ng-model= "attribute.value" name="{{attribute.name}}" id="{{attribute.name}}" ng-required="attribute.required != undefined">
+                                                        <span class="form-icon"><i class="fa fa-text"></i></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div ng-if="attribute.type == 'radio'">
+                                                <div class="row">
+                                                    <div class="input-field align-left col s10">
+                                                        <span><strong>{{attribute.name}}</strong> - {{attribute.description}}</span><br>
+                                                        <md-radio-group ng-model="attribute.value">
+                                                            <md-radio-button ng-repeat="option in attribute.options" ng-value="option" ng-model="attribute.value">
+                                                                <span class="fs-16">{{option}}</span>
+                                                            </md-radio-button>
+                                                        </md-radio-group>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div ng-if="attribute.type =='checkbox'">
+                                                <div class="row">
+                                                    <div class="input-field align-left col s10">
+                                                        <span><strong>{{attribute.name}}</strong> - {{attribute.description}}</span><br>
+                                                        <div ng-repeat="option in attribute.options">
+                                                            <input type="checkbox" ng-click="challenge.toggleSelection(attribute, option);" id="{{option}}" ng-value="option">
+                                                            <label for="{{option}}"></label>
+                                                            <span  class="fs-16 w-300 submission-options">{{option}}</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div ng-if="attribute.type=='boolean'">
+                                                <div class="row">
+                                                    <div class="input-field align-left col s10">
+                                                        <span><strong>{{attribute.name}}</strong> - {{attribute.description}}</span><br>
+                                                        <div class="">
+                                                            <md-radio-group ng-model="attribute.value" ng-required="attribute.required != undefined">
+                                                                <md-radio-button ng-value="'True'">True</md-radio-button>
+                                                                <md-radio-button  ng-value="'False'">False</md-radio-button>
+                                                            </md-radio-group>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                       </div>
+                                    </div>
+                                </div>
+
+                            <div class="text-highlight red-text"><strong>{{challenge.subErrors.msg}}</strong></div>
+                            <section class="pagination">
+                                <div class="row rm-gut">
+                                    <div class="col s12 m12">
+                                        <div class="align-left">
+                                            <button class="waves-effect waves-dark btn ev-btn-dark w-300 fs-16"
+                                                ng-disabled="challenge.disableSubmit || (!challenge.input_file && !challenge.fileUrl)"
+                                                type="submit" value="Submit">Submit</button>
+                                            <br>
+                                            <br>
+                                            <span class="text-dark-black"><strong>{{challenge.submissionError}}</strong></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                        </ul>
+                    </form>
+                </div>
+            </div>
+            <div ng-if="challenge.maxExceeded" class="col s12 m5">
+                <div class="ev-card-body exist-team-card ev-remaining-submission remaining-submission-clock">
+                    <div class="row">
+                        <span class="color-black">
+                            <strong>
+                                {{challenge.maxExceededMessage}}
+                            </strong>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div ng-if="challenge.showSubmissionNumbers" class="col s12 m5">
+                <div class="ev-card-body exist-team-card ev-remaining-submission remaining-submission-clock">
+                    <div class="row">
+                        <span class="color-black">
+                            <strong>
+                                Today's remaining submissions:
+                            </strong>
+                            <span class="fs-16 w-300">
+                                {{challenge.remainingSubmissions.remaining_submissions_today_count}}
+                            </span>
+                    </div>
+                    <div class="row">
+                        <div class="row">
+                            <span class="color-black">
+                                <strong>
+                                    Monthly remaining submissions:
+                                </strong>
+                                <span class="fs-16 w-300">
+                                    {{challenge.remainingSubmissions.remaining_submissions_this_month_count}}
+                                </span>
+                        </div>
+                        <span class="color-black">
+                            <strong>
+                                Total remaining submissions:
+                            </strong>
+                        </span>
+                        <span class="fs-16 w-300">
+                            {{challenge.remainingSubmissions.remaining_submissions_count}}
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div ng-if="challenge.showClock" class="col s12 m5 fs-16 w-300">
+                <div class="ev-card-body exist-team-card ev-remaining-submission remaining-submission-clock">
+                    <div class="row">
+                        <strong class="text-med-black">
+                            Message:
+                        </strong> {{challenge.message.message}}
+                    </div>
+                    <div>
+                        Next set of submissions will be available after:
+                    </div>
+                    <div>
+                        <span ng-if="challenge.days!=0">{{challenge.days}} Days, </span>{{challenge.hours}}
+                        hours : {{challenge.minutes}} minutes : {{challenge.remainingSeconds}} seconds
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Show error when the challenge is not active -->
+<section ng-if="!challenge.isActive" class="ev-sm-container ev-view challenge-container">
+    <div class="ev-md-container ev-card-panel ev-z-depth-5 ev-challenge-view">
+        <p class="fs-16 w-300">Sorry, the challenge is not active.</p>
+    </div>
+</section>

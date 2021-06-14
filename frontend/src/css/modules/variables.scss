@@ -1,0 +1,79 @@
+/*font variable*/
+
+$rob-light: 200;
+$rob-med: 300;
+$rob-reg: 400;
+$rob-bold: 600;
+
+/*blue shades*/
+
+$light-gray: #4f5d92;
+$med-gray: #232844;
+$dark-gray: #252833;
+$dust-gray: #1a1b1f;
+$blue: #3B9EB9;
+$wait-blue:#5843A3;
+
+/*green shades*/
+
+$med-green: rgb(8, 160, 3);
+
+/*red shades*/
+$med-red: #DB3232;
+
+/*black shades*/
+
+$shadow-black: #dedede;
+$light-black: #9d9d9d;
+$med-black: #232844;
+$dark-black:#2b3869;
+
+/*orange shades*/
+
+$highlight: #ffaf4b;
+$highlight-dark: #ff7b2e;
+$med-orange: #DF9C3E;
+$hover-orange: #DA8F27;
+
+/*transparent*/
+
+$transparent: rgba(0, 0, 0, 0);
+
+/*link colors*/
+
+$light-link: #fff;
+$med-link: #4f5d92;
+$dark-link: #252833;
+
+/*link hover colors*/
+
+$link-hover-dark: #ffaf4b;
+$link-hover-light: #fff;
+
+/*loader variable*/
+
+$loader-size: 70px;
+$loader-dot-size: ($loader-size / 5);
+$loader-height: $loader-dot-size;
+$loader-dot-color: #ffaf4b;
+
+/*border color*/
+
+$border-color-light: #e3e3e3;
+
+/*Screen Size Variables*/
+
+$small-screen: 600px;
+$med-screen: 992px;
+$large-screen: 1280px;
+$xlarge-screen: 1441px;
+
+/*grad new variables*/
+
+$grad-super-light: #fafafa;
+$grad-light-black: #dcdcdc;
+$grad-sec-gray: #45334e;
+
+/*shadow colors*/
+
+$super-light-shadow: #ececec;
